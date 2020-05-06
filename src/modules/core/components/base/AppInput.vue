@@ -1,40 +1,38 @@
 <template>
-  <b-form-group
-    class="app-input"
-    :id="'input-group-' + scopeId"
-    :label="label"
-    :label-for="'input-' + scopeId"
-    :state="state"
-  >
-    <b-form-input
+  <div class="input-wrapper" :class="{ 'has-error': hasError }">
+    <label
+      v-if="label"
+      class="label"
+      :for="'input-' + scopeId"
+    >{{ label }}</label>
+    <input
       :id="'input-' + scopeId"
-      :state="state"
+      :type="type"
+      class="input"
       v-bind="$attrs"
+      @input="$emit('update', $event.target.value)"
       v-on="$listeners"
-      class="app-input__input"
-      :class="inputClass"
-    >
-    </b-form-input>
-    <b-form-invalid-feedback v-if="errorMessage">
-      {{ errorMessage }}
-    </b-form-invalid-feedback>
-    <slot v-else name="errorMessage" />
-  </b-form-group>
+    />
+    <p
+      v-if="hasError && errorMessage"
+      class="error-message"
+    >{{ errorMessage }}</p>
+  </div>
 </template>
 
 <script>
 export default {
   inheritAttrs: false,
-  /* model: {
+  model: {
     event: 'update'
-  }, */
+  },
   data () {
     return {
-      scopeId: (new Date()).getTime() + Math.random()
+      scopeId: Math.random().toString()
     }
   },
   props: {
-    /* type: {
+    type: {
       type: String,
       default: 'text',
       validator (value) {
@@ -48,18 +46,14 @@ export default {
           'url'
         ].includes(value)
       }
-    }, */
+    },
     label: {
       type: String,
       default: ''
     },
-    inputClass: {
-      type: String,
-      default: ''
-    },
-    state: {
+    hasError: {
       type: Boolean,
-      default: null
+      default: false
     },
     errorMessage: {
       type: String,
@@ -69,5 +63,5 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 </style>

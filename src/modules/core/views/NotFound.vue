@@ -1,7 +1,7 @@
 <template>
-  <b-container>
+  <div>
     <h1>404 - Page not Found</h1>
-  </b-container>
+  </div>
 </template>
 
 <script>
