@@ -3,6 +3,7 @@
     v-if="href"
     :href="href"
     :target="target"
+    class="link"
   >
     <slot />
   </a>
@@ -31,4 +32,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.link {
+  &:link,
+  &:visited {
+    text-decoration: none;
+  }
+}
 </style>
