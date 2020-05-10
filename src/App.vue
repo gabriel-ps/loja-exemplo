@@ -26,8 +26,9 @@ export default {
 @import '@/assets/sass/main';
 
 .app {
-  &__main {
+  background-color: $color-main-section;
+  /* &__main {
     background-color: $color-main-section;
-  }
+  } */
 }
 </style>

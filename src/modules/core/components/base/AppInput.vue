@@ -1,19 +1,19 @@
 <template>
   <div class="input" :class="{ 'input--error': hasError }">
-    <label
-      v-if="label"
-      class="input__label"
-      :for="'input-' + scopeId"
-    >{{ label }}</label>
     <input
       :id="'input-' + scopeId"
       :type="type"
-      :placeholder="placeholder"
+      :placeholder="label"
       class="input__el"
       v-bind="$attrs"
       @input="$emit('update', $event.target.value)"
       v-on="$listeners"
     />
+    <label
+      v-if="label"
+      class="input__label"
+      :for="'input-' + scopeId"
+    >{{ label }}</label>
     <p
       v-if="hasError && errorMessage"
       class="input__error"
@@ -52,10 +52,10 @@ export default {
       type: String,
       default: ''
     },
-    placeholder: {
+    /* placeholder: {
       type: String,
       default: ''
-    },
+    }, */
     hasError: {
       type: Boolean,
       default: false
@@ -68,23 +68,40 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '@/assets/sass/abstracts/_variables';
 
 .input {
+  position: relative;
+  font-size: 2.2rem;
+
+  &__label {
+    color: $color-light-gray;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all .1s ease-in-out;
+  }
+
   &__el {
     &,
     &:active,
     &:focus {
       width: 100%;
       border: none;
-      border-bottom: solid 2px #C9C9C9;
+      border-bottom: solid 2px $color-light-gray;
       outline: none;
-      font-size: 2.2rem;
-      padding: 1rem;
+      font-size: inherit;
+      padding: 1rem 0;
 
       &::placeholder {
-        color: #C9C9C9;
+        color: transparent;
+        // display: none;
+      }
+
+      &:not(:placeholder-shown) ~ label {
+        font-size: 1.3rem;
+        top: -16px;
       }
     }
   }

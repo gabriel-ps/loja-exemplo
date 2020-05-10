@@ -1,6 +1,6 @@
 <template>
   <section class="payment">
-    <div class="payment__card-side">
+    <div class="payment__side payment__side--card">
       <app-container>
         <p>Alterar forma de pagamento</p>
 
@@ -9,25 +9,25 @@
         <credit-card />
       </app-container>
     </div>
-    <data class="payment__data-side">
-      <app-steps :steps="steps" />
+    <data class="payment__side payment__side--data">
+      <app-steps :steps="steps" :current="1" />
       <!-- <div class="steps">
         <div class="steps__step">1 Carrinho</div>
       </div> -->
       <form class="card-data" @submit.prevent="">
         <app-input
-          placeholder="Número do cartão"
+          label="Número do cartão"
           :hasError="true"
-          errorMessage="Invalido"
+          errorMessage="Inválido"
         />
 
         <div class="two-cols">
-          <app-input class="two-cols__col" placeholder="Nome (igual ao cartão)" />
-          <app-input class="two-cols__col" placeholder="Nome (igual ao cartão)" />
+          <app-input class="two-cols__col" label="Nome (igual ao cartão)" />
+          <app-input class="two-cols__col" label="Nome (igual ao cartão)" />
         </div>
 
-        <app-input placeholder="Nome (igual ao cartão)" />
-        <app-input placeholder="Nome (igual ao cartão)" />
+        <app-input label="Nome (igual ao cartão)" />
+        <app-input label="Nome (igual ao cartão)" />
 
         <app-button>Continuar</app-button>
       </form>
@@ -69,6 +69,7 @@ export default {
 }
 
 .card-data {
+  margin-top: 5rem;
   // .input:not(:last-child) {
   .input {
     margin-bottom: 4rem;;
@@ -78,18 +79,21 @@ export default {
 .payment {
   display: flex;
   background: $color-secondary;
+  margin: 7rem 0;
 
-  &__card-side {
-    position: relative;
-    background: $color-primary;
-    color: $color-secondary;
-    width: 34%;
-    padding-left: 7.5rem;
-  }
+  &__side {
+    &--card {
+      position: relative;
+      background: $color-primary;
+      color: $color-secondary;
+      width: 34%;
+      padding: 5rem 5rem 5rem 7.5rem;
+    }
 
-  &__data-side {
-    width: 66%;
-    padding: 5rem 5rem 5rem 14.5rem;
+    &--data {
+      width: 66%;
+      padding: 5rem 5rem 5rem 14.5rem;
+    }
   }
 }
 </style>

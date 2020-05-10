@@ -6,15 +6,18 @@
       class="steps__step"
     >
       <div
-        class="img-checked"
-        v-if="current === i">
+        class="steps__step__img steps__step__img--checked"
+        v-if="current === i"
+      >
         <img
           src="@/assets/images/payment/checked.svg"
-          class="img-checked__img"
         />
       </div>
-      <div v-else>{{ i + 1 }}</div>
-      <div>{{ step }}</div>
+      <div
+        v-else
+        class="steps__step__img steps__step__img--unchecked"
+      >{{ i + 1 }}</div>
+      <div class="steps__step__img-text">{{ step }}</div>
     </div>
   </div>
 </template>
@@ -39,24 +42,39 @@ export default {
 <style lang="scss">
 @import '@/assets/sass/abstracts/_variables';
 
-.img-checked {
-  width: 22px;
-  height: 22px;
-  background: red;
-  border-radius: 250rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  &__img {
-
-  }
-}
 .steps {
+  margin: 0 3rem;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: $color-primary;
 
   &__step {
     display: flex;
+    // margin: 0 1rem;
+    align-items: center;
+    font-weight: bold;
+
+    &__img-text {
+      margin-left: 5px;
+    }
+
+    &__img {
+      width: 22px;
+      height: 22px;
+      border-radius: 250px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &--checked {
+        background: $color-primary;
+        // &__img {}
+      }
+      &--unchecked {
+        border: $color-primary solid 2px;
+      }
+    }
   }
 }
 </style>

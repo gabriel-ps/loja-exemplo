@@ -22,6 +22,7 @@ export default {}
 
 .header {
   padding: 3rem 0;
+  background-color: $color-secondary;
 
   &__container {
     display: flex;

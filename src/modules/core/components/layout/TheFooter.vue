@@ -14,6 +14,7 @@ export default {}
 @import '@/assets/sass/abstracts/_variables';
 
 .footer {
+  background-color: $color-secondary;
   font-size: $default-font-size;
 
   &__container {
