@@ -1,21 +1,22 @@
 <template>
-  <div class="input-wrapper" :class="{ 'has-error': hasError }">
+  <div class="input" :class="{ 'input--error': hasError }">
     <label
       v-if="label"
-      class="label"
+      class="input__label"
       :for="'input-' + scopeId"
     >{{ label }}</label>
     <input
       :id="'input-' + scopeId"
       :type="type"
-      class="input"
+      :placeholder="placeholder"
+      class="input__el"
       v-bind="$attrs"
       @input="$emit('update', $event.target.value)"
       v-on="$listeners"
     />
     <p
       v-if="hasError && errorMessage"
-      class="error-message"
+      class="input__error"
     >{{ errorMessage }}</p>
   </div>
 </template>
@@ -51,6 +52,10 @@ export default {
       type: String,
       default: ''
     },
+    placeholder: {
+      type: String,
+      default: ''
+    },
     hasError: {
       type: Boolean,
       default: false
@@ -64,4 +69,32 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/sass/abstracts/_variables';
+
+.input {
+  &__el {
+    &,
+    &:active,
+    &:focus {
+      width: 100%;
+      border: none;
+      border-bottom: solid 2px #C9C9C9;
+      outline: none;
+      font-size: 2.2rem;
+      padding: 1rem;
+
+      &::placeholder {
+        color: #C9C9C9;
+      }
+    }
+  }
+  &--error &__el {
+    border-bottom: solid 2px $color-error;
+  }
+
+  &__error {
+    color: $color-error;
+    font-size: 1.8rem;
+  }
+}
 </style>

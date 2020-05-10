@@ -7,7 +7,11 @@
   >
     <slot />
   </a>
-  <router-link v-else :to="to">
+  <router-link
+    v-else
+    :to="to"
+    class="link"
+  >
     <slot />
   </router-link>
 </template>
@@ -25,7 +29,7 @@ export default {
     },
     target: {
       type: String,
-      default: '_blank'
+      default: '_self'
     }
   }
 }

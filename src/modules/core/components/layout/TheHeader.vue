@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <app-container class="header__container">
-      <img src="@/assets/images/header/group-2290.svg" alt="group-2290.svg">
+      <img src="@/assets/images/header/group-2290.svg" alt="group-2290.svg" />
       <nav class="header__nav">
         <app-link href="#" class="header__nav__item">Home</app-link>
         <app-link href="#" class="header__nav__item">Sobre nós</app-link>

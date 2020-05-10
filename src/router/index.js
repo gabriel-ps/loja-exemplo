@@ -2,11 +2,13 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import core from '@/modules/core/routes'
+import payment from '@/modules/payment/routes'
 
 Vue.use(Router)
 
 const routes = [
-  ...core
+  ...core,
+  ...payment
 ]
 
 const router = new Router({
