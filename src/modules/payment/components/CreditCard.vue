@@ -50,6 +50,7 @@ export default {
 
 <style lang="scss">
 @import '@/assets/sass/abstracts/_variables';
+@import '@/assets/sass/abstracts/_mixins';
 
 .card {
   width: 36.4rem;
@@ -58,6 +59,12 @@ export default {
   -moz-perspective: 150rem;
   position: absolute;
   right: -10%;
+  z-index: 10;
+
+  @include respond-small {
+    left: 50%;
+    transform: translateX(-50%);
+  }
 
   &__side {
     height: 100%;
@@ -70,6 +77,7 @@ export default {
     border-radius: 3px;
     box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
     overflow: hidden;
+    background-size: cover;
 
     // display: flex;
     // flex-direction: column;
@@ -107,27 +115,27 @@ export default {
     font-size: 1.8rem;
 
     &--type {
-      left: 40px;
-      top: 25px;
+      left: 4rem;
+      top: 2.5rem;
     }
     &--number {
-      left: 40px;
-      top: 95px;
+      left: 4rem;
+      top: 9.5rem;
       letter-spacing: 2.31px;
     }
     &--name {
-      left: 40px;
-      top: 155px;
+      left: 4rem;
+      top: 15.5rem;
     }
 
     &--expiration-date {
-      left: 270px;
-      top: 155px;
+      left: 27rem;
+      top: 15.5rem;
     }
 
     &--cvv {
-      top: 105px;
-      left: 180px;
+      top: 10.4rem;
+      left: 18rem;
       color: #3C3C3C;
     }
   }

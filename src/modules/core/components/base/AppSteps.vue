@@ -41,6 +41,7 @@ export default {
 
 <style lang="scss">
 @import '@/assets/sass/abstracts/_variables';
+@import '@/assets/sass/abstracts/_mixins';
 
 .steps {
   margin: 0 3rem;
@@ -49,6 +50,10 @@ export default {
   align-items: center;
   color: $color-primary;
   font-size: 1.6rem;
+
+  @include respond-small {
+    display: none;
+  }
 
   &__step {
     display: flex;
@@ -70,7 +75,6 @@ export default {
 
       &--checked {
         background: $color-primary;
-        // &__img {}
       }
       &--unchecked {
         border: $color-primary solid 2px;

@@ -19,6 +19,7 @@ export default {}
 
 <style lang="scss">
 @import '@/assets/sass/abstracts/_variables';
+@import '@/assets/sass/abstracts/_mixins';
 
 .header {
   padding: 3rem 0;
@@ -41,6 +42,10 @@ export default {}
       color: #3C3C3C;
       font-weight: 700;
       font-size: $default-font-size;
+    }
+
+    @include respond-ext-small {
+      display: none;
     }
   }
 }

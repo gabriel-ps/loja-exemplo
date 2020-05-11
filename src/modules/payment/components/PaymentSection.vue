@@ -13,10 +13,10 @@
       </app-container>
     </div>
     <data class="payment__side payment__side--data">
-      <app-steps :steps="steps" :current="1" />
-      <!-- <div class="steps">
-        <div class="steps__step">1 Carrinho</div>
-      </div> -->
+      <app-steps
+        :steps="steps"
+        :current="1"
+      />
       <credit-card-form
         :credit-card="creditCard"
         @card-update="cardUpdate"
@@ -59,15 +59,24 @@ export default {
 
 <style lang="scss">
 @import '@/assets/sass/abstracts/_variables';
+@import '@/assets/sass/abstracts/_mixins';
 
 .go-back {
   font-size: 1.3rem;
+
+  @include respond-small {
+    display: none;
+  }
 }
 
 .payment {
   display: flex;
   background: $color-secondary;
   margin: 7rem 0;
+
+  @include respond-small {
+    flex-direction: column;
+  }
 
   .heading-primary {
     margin-top: 5rem;
@@ -80,11 +89,21 @@ export default {
       color: $color-secondary;
       width: 34%;
       padding: 5rem 5rem 5rem 7.5rem;
+
+      @include respond-small {
+        width: auto;
+        padding: 5rem 5rem 15rem 7.5rem;
+      }
     }
 
     &--data {
       width: 66%;
       padding: 5rem 5rem 5rem 14.5rem;
+
+      @include respond-small {
+        width: auto;
+        padding: 5rem 5rem 5rem 5rem;
+      }
     }
   }
 }
