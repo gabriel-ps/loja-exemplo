@@ -6,7 +6,10 @@
 
         <heading-primary />
 
-        <credit-card />
+        <credit-card
+          :credit-card="creditCard"
+          :show-back="showCardBack"
+        />
       </app-container>
     </div>
     <data class="payment__side payment__side--data">
@@ -14,23 +17,11 @@
       <!-- <div class="steps">
         <div class="steps__step">1 Carrinho</div>
       </div> -->
-      <form class="card-data" @submit.prevent="">
-        <app-input
-          label="Número do cartão"
-          :hasError="true"
-          errorMessage="Inválido"
-        />
-
-        <div class="two-cols">
-          <app-input class="two-cols__col" label="Nome (igual ao cartão)" />
-          <app-input class="two-cols__col" label="Nome (igual ao cartão)" />
-        </div>
-
-        <app-input label="Nome (igual ao cartão)" />
-        <app-input label="Nome (igual ao cartão)" />
-
-        <app-button class="f-right">Continuar</app-button>
-      </form>
+      <credit-card-form
+        :credit-card="creditCard"
+        @card-update="cardUpdate"
+        @showBack="showCardBack = $event"
+      />
     </data>
   </section>
 </template>
@@ -38,19 +29,29 @@
 <script>
 import HeadingPrimary from './HeadingPrimary'
 import CreditCard from './CreditCard'
+import CreditCardForm from './CreditCardForm'
+import CreditCardData from '../domain/CreditCard'
 
 export default {
   components: {
     HeadingPrimary,
-    CreditCard
+    CreditCard,
+    CreditCardForm
   },
   data () {
     return {
+      creditCard: new CreditCardData(),
+      showCardBack: false,
       steps: [
         'Carrinho',
         'Pagamento',
         'Confirmação'
       ]
+    }
+  },
+  methods: {
+    cardUpdate (data) {
+      this.creditCard[data.key] = data.value
     }
   }
 }
@@ -58,23 +59,6 @@ export default {
 
 <style lang="scss">
 @import '@/assets/sass/abstracts/_variables';
-
-.two-cols{
-  display: flex;
-  justify-content: space-between;
-
-  &__col {
-    width: 48%;
-  }
-}
-
-.card-data {
-  margin-top: 5rem;
-  // .input:not(:last-child) {
-  .input {
-    margin-bottom: 4rem;;
-  }
-}
 
 .payment {
   display: flex;

@@ -1,5 +1,8 @@
 <template>
-  <div class="card">
+  <div
+    class="card"
+    :class="{'card--show-back': showBack}"
+  >
     <div
       class="card__side card__side--front"
       :class="{
@@ -7,6 +10,10 @@
         'card__side--front-unknown': !known
       }"
     >
+      <div class="card__info card__info--type">{{ creditCard.type }}</div>
+      <div class="card__info card__info--number">{{ creditCard.number }}</div>
+      <div class="card__info card__info--name">{{ creditCard.name }}</div>
+      <div class="card__info card__info--expiration-date">{{ creditCard.expirationDate }}</div>
     </div>
     <div
       class="card__side card__side--back"
@@ -15,15 +22,27 @@
         'card__side--back-unknown': !known
       }"
     >
+      <div class="card__info card__info--cvv">{{ creditCard.cvv }}</div>
     </div>
   </div>
 </template>
 
 <script>
+import CreditCard from '../domain/CreditCard'
+
 export default {
-  data () {
-    return {
-      known: false
+  props: {
+    creditCard: {
+      type: CreditCard
+    },
+    showBack: {
+      type: Boolean,
+      default: false
+    }
+  },
+  computed: {
+    known () {
+      return !!this.creditCard.type
     }
   }
 }
@@ -52,6 +71,9 @@ export default {
     box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
     overflow: hidden;
 
+    // display: flex;
+    // flex-direction: column;
+
     &--front {
       &-known {
         background-image: url('~@/assets/images/payment/card-front-known.svg')
@@ -72,12 +94,42 @@ export default {
     }
   }
 
-  &:hover &__side--front {
+  &--show-back &__side--front {
     transform: rotateY(-180deg);
   }
 
-  &:hover &__side--back {
+  &--show-back &__side--back {
     transform: rotateY(0);
+  }
+
+  &__info {
+    position: absolute;
+    font-size: 1.8rem;
+
+    &--type {
+      left: 40px;
+      top: 25px;
+    }
+    &--number {
+      left: 40px;
+      top: 95px;
+      letter-spacing: 2.31px;
+    }
+    &--name {
+      left: 40px;
+      top: 155px;
+    }
+
+    &--expiration-date {
+      left: 270px;
+      top: 155px;
+    }
+
+    &--cvv {
+      top: 105px;
+      left: 180px;
+      color: #3C3C3C;
+    }
   }
 }
 </style>

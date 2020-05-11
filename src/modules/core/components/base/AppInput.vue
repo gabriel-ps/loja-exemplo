@@ -76,6 +76,7 @@ export default {
   font-size: 2.2rem;
 
   &__label {
+    cursor: text;
     color: $color-light-gray;
     position: absolute;
     top: 0;
