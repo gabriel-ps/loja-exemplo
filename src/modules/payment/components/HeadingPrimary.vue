@@ -12,5 +12,17 @@ export default {}
 <style lang="scss">
 // @import '@/assets/sass/abstracts/_variables';
 
-// .heading-primary {}
+.heading-primary {
+  display: flex;
+  align-items: center;
+
+  &__icon {
+    height: 8rem;
+    width: 8rem;
+  }
+  &__text {
+    font-size: 2.1rem;
+    margin-left: 1.5rem;
+  }
+}
 </style>

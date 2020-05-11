@@ -7,7 +7,7 @@
     >
       <div
         class="steps__step__img steps__step__img--checked"
-        v-if="current === i"
+        v-if="current >= i"
       >
         <img
           src="@/assets/images/payment/checked.svg"
@@ -48,6 +48,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   color: $color-primary;
+  font-size: 1.6rem;
 
   &__step {
     display: flex;

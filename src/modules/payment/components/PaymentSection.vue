@@ -2,7 +2,7 @@
   <section class="payment">
     <div class="payment__side payment__side--card">
       <app-container>
-        <p>Alterar forma de pagamento</p>
+        <p class="go-back">Alterar forma de pagamento</p>
 
         <heading-primary />
 
@@ -60,10 +60,18 @@ export default {
 <style lang="scss">
 @import '@/assets/sass/abstracts/_variables';
 
+.go-back {
+  font-size: 1.3rem;
+}
+
 .payment {
   display: flex;
   background: $color-secondary;
   margin: 7rem 0;
+
+  .heading-primary {
+    margin-top: 5rem;
+  }
 
   &__side {
     &--card {
