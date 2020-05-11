@@ -29,7 +29,7 @@
         <app-input label="Nome (igual ao cartão)" />
         <app-input label="Nome (igual ao cartão)" />
 
-        <app-button>Continuar</app-button>
+        <app-button class="f-right">Continuar</app-button>
       </form>
     </data>
   </section>
